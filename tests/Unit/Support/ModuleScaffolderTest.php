@@ -22,7 +22,7 @@ final class ModuleScaffolderTest extends TestCase
 
     protected function tearDown(): void
     {
-        new Filesystem()->deleteDirectory($this->fixturePath);
+        (new Filesystem())->deleteDirectory($this->fixturePath);
 
         parent::tearDown();
     }
@@ -69,7 +69,7 @@ final class ModuleScaffolderTest extends TestCase
     {
         $this->expectException(RuntimeException::class);
 
-        new ModuleScaffolder(new Filesystem())->scaffold(
+        (new ModuleScaffolder(new Filesystem()))->scaffold(
             '../outside',
             $this->fixturePath,
             'Modules',

@@ -24,6 +24,11 @@ stay stable during onboarding.
 - Corrected generated Deptrac layers for Shared contracts and module Domains.
 - Generated Deptrac config covering `./app` and `./Modules` with configurable Carbon and Illuminate allowances.
 
+### Changed
+
+- Lower the minimum supported PHP version from 8.4 to 8.3 (Laravel 13 itself requires PHP ^8.3). Test code no longer uses the PHP 8.4-only `new Foo()->method()` syntax.
+- Run CI on PHP 8.3, 8.4 and 8.5 and point Rector at `UP_TO_PHP_83`.
+
 ## [0.1.0] - Initial release
 
 - Initial Laravel 13 package scaffolding, installer, module generator, and

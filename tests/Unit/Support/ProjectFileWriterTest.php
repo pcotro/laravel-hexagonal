@@ -18,12 +18,12 @@ final class ProjectFileWriterTest extends TestCase
         parent::setUp();
 
         $this->fixturePath = sys_get_temp_dir() . '/laravel-hexagonal-' . bin2hex(random_bytes(6));
-        new Filesystem()->ensureDirectoryExists($this->fixturePath);
+        (new Filesystem())->ensureDirectoryExists($this->fixturePath);
     }
 
     protected function tearDown(): void
     {
-        new Filesystem()->deleteDirectory($this->fixturePath);
+        (new Filesystem())->deleteDirectory($this->fixturePath);
 
         parent::tearDown();
     }
@@ -63,7 +63,7 @@ final class ProjectFileWriterTest extends TestCase
 
         $this->expectException(RuntimeException::class);
 
-        new ProjectFileWriter($files)->addModulesAutoload($composerPath);
+        (new ProjectFileWriter($files))->addModulesAutoload($composerPath);
     }
 
     public function test_it_adds_the_deptrac_dev_dependency_once(): void
@@ -87,7 +87,7 @@ final class ProjectFileWriterTest extends TestCase
         $composerPath = $this->fixturePath . '/composer.json';
         $files->put($composerPath, '{}');
 
-        $this->assertTrue(new ProjectFileWriter($files)->addRuntimeDependency(
+        $this->assertTrue((new ProjectFileWriter($files))->addRuntimeDependency(
             $composerPath,
             'nwidart/laravel-modules',
             '^13.0',
@@ -125,6 +125,6 @@ final class ProjectFileWriterTest extends TestCase
 
         $this->expectException(RuntimeException::class);
 
-        new ProjectFileWriter($files)->addDevDependency($composerPath, 'deptrac/deptrac', '^4.7');
+        (new ProjectFileWriter($files))->addDevDependency($composerPath, 'deptrac/deptrac', '^4.7');
     }
 }

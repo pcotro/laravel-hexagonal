@@ -21,7 +21,7 @@ final class StubPathResolverTest extends TestCase
 
     protected function tearDown(): void
     {
-        new Filesystem()->deleteDirectory($this->fixturePath);
+        (new Filesystem())->deleteDirectory($this->fixturePath);
 
         parent::tearDown();
     }
@@ -33,7 +33,7 @@ final class StubPathResolverTest extends TestCase
         $files->ensureDirectoryExists($publishedPath);
         config()->set('hexagonal.stubs.module', $publishedPath);
 
-        $this->assertSame($publishedPath, new StubPathResolver($files)->module());
+        $this->assertSame($publishedPath, (new StubPathResolver($files))->module());
     }
 
     public function test_it_accepts_a_custom_module_stub_directory_for_one_command(): void
@@ -42,7 +42,7 @@ final class StubPathResolverTest extends TestCase
         $customPath = $this->fixturePath . '/custom-module';
         $files->ensureDirectoryExists($customPath);
 
-        $this->assertSame($customPath, new StubPathResolver($files)->module($customPath));
+        $this->assertSame($customPath, (new StubPathResolver($files))->module($customPath));
     }
 
     public function test_it_falls_back_to_the_package_module_stub_directory(): void
@@ -50,7 +50,7 @@ final class StubPathResolverTest extends TestCase
         $files = new Filesystem();
         config()->set('hexagonal.stubs.module', $this->fixturePath . '/missing-module');
 
-        $stubPath = new StubPathResolver($files)->module();
+        $stubPath = (new StubPathResolver($files))->module();
 
         $this->assertDirectoryExists($stubPath);
         $this->assertStringEndsWith('/stubs/module', $stubPath);

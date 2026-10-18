@@ -14,7 +14,7 @@ The complete Account money-transfer example lives in the companion repository:
 
 ## Requirements
 
-- PHP 8.4 or 8.5
+- PHP 8.3, 8.4 or 8.5
 - Laravel 13
 - `nwidart/laravel-modules` 13
 
@@ -140,7 +140,7 @@ The package development suite includes:
 - PHPMD
 - Deptrac dependency direction checks
 - Rector dry-run checks
-- GitHub Actions on PHP 8.4 and 8.5
+- GitHub Actions on PHP 8.3, 8.4 and 8.5
 
 The package keeps its external interface small: the Laravel service provider,
 the three Artisan commands, and the publishable stub set. File writing and
@@ -151,7 +151,7 @@ module scaffolding are internal seams covered by unit tests.
 Releases follow Semantic Versioning. This project is pre-1.0: while the
 external interface is stable in practice, breaking changes land in `0.x` minor
 bumps rather than a `1.0` major, so pin a `^0.<minor>` constraint to stay
-stable during onboarding. The `0.x` line targets Laravel 13 and PHP 8.4+.
+stable during onboarding. The `0.x` line targets Laravel 13 and PHP 8.3+.
 Laravel major-version support changes require a compatibility update in
 `composer.json`, CI, and this document.
 

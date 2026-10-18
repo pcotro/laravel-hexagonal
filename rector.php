@@ -13,6 +13,6 @@ return static function (RectorConfig $rectorConfig): void {
 
     $rectorConfig->cacheDirectory(__DIR__ . '/build/rector');
     $rectorConfig->sets([
-        LevelSetList::UP_TO_PHP_84,
+        LevelSetList::UP_TO_PHP_83,
     ]);
 };
